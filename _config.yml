@@ -1,8 +1,66 @@
-title: Your awesome title
-description: My awesome site
-permalink: /:slugified_categories/:title/
+title: Powers Hell
+titlecolor: cyan
+description: great/power/is/great/fun >
+permalink: /:year/:month/:day/:title/
+twitter_username: powers_hell
+github_username: tabs-not-spaces
+url: https://powers-hell.com
+google_analytics: G-SGKQTF5F0T
 
-date_format: "%b %-d, %Y"
+plugins:
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll/tagging
+  - jekyll-tagging-related_posts
+  - jekyll-archives
+
+paginate: 5
+paginate_path: "/page:num/"
+
+date_format: "%-d %b"
+post_date_format: "%-d %b %Y"
+excerpt_separator: <!--more-->
+markdown: kramdown
+theme: minima
+
+jekyll_compose:
+  default_front_matter:
+    drafts:
+      id: 000
+      author: Ben
+      views: 0
+      image:
+      categories:
+        - PowerShell
+      tags:
+        - PowerShell
+    posts:
+      id: 000
+      author: Ben
+      views: 0
+      image:
+      categories:
+        - PowerShell
+      tags:
+        - PowerShell
+
+jekyll-archives:
+  enabled:
+    - year
+    - month
+    - categories
+  layouts:
+    year: archive-years
+    month: archive-months
+    category: archive-categories
+  permalinks:
+    year: 'year/:year/'
+    category: '/category/:name/'
+
+include:
+  - node_modules
+  - ads.txt
 
 exclude:
   - "package*.json"

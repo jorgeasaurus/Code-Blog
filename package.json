@@ -1,29 +1,39 @@
 {
     "private": true,
     "scripts": {
-        "start": "concurrently -k --restart-tries 3 --restart-after 3000 -p [{name}] -n webpack,jekyll -c yellow,cyan npm:watch:webpack npm:watch:jekyll",
+        "start": "npm run localenv && concurrently -k --restart-tries 3 --restart-after 3000 -p [{name}] -n webpack,jekyll -c yellow,cyan npm:watch:webpack npm:watch:jekyll",
         "dev": "encore dev",
+        "localenv": ". ./.env.local",
         "prod": "encore prod",
+        "build": "bundle exec jekyll build",
         "watch:webpack": "encore dev --watch",
-        "watch:jekyll": "bundle exec jekyll serve --livereload --drafts --open",
+        "watch:jekyll": "bundle exec jekyll serve --host=0.0.0.0 -l -o",
         "lint": "eslint --cache .",
         "format": "npm run lint -- --fix",
         "postinstall": "bundle install --path=vendor/bundle --jobs=4 --retry=3"
     },
     "dependencies": {
-        "alpinejs": "^3.2.3"
+        "@dracula/dracula-ui": "^0.8.0",
+        "@duckdoc/termynal": "^1.0.0",
+        "alpinejs": "^2.8.2",
+        "github-markdown-dracula-css": "^4.0.3",
+        "jquery": "^3.6.0",
+        "nightwind": "^1.1.11",
+        "postcss-custom-properties": "^11.0.0",
+        "postcss-import": "^14.0.2",
+        "postcss-nested": "^5.0.5"
     },
     "devDependencies": {
         "@symfony/webpack-encore": "^1.5.0",
-        "@tailwindcss/forms": "^0.3.3",
-        "@tailwindcss/typography": "^0.4.1",
-        "autoprefixer": "^10.3.1",
-        "concurrently": "^6.2.0",
-        "eslint": "^7.32.0",
+        "@tailwindcss/forms": "^0.3.2",
+        "@tailwindcss/typography": "^0.4.0",
+        "autoprefixer": "^10.2.5",
+        "concurrently": "^6.0.1",
+        "eslint": "^7.24.0",
         "eslint-config-airbnb-base": "^14.2.1",
-        "eslint-plugin-import": "^2.23.4",
-        "postcss-loader": "^6.1.1",
-        "tailwindcss": "^2.2.7"
+        "eslint-plugin-import": "^2.22.1",
+        "postcss-loader": "^5.2.0",
+        "tailwindcss": "^2.1.1"
     },
     "browserslist": [
         "> 0.5%",
